@@ -1,5 +1,5 @@
 const { ApolloServer, gql } = require('apollo-server');
-
+import { typeDefs } from './schema';
 // This is a (sample) collection of trends we'll be able to query
 // the GraphQL server for.  A more complete example might fetch
 // from an existing data source like a REST API or database.
@@ -7,26 +7,32 @@ const trends = [
   {
     metric: 'Phone Experience',
     value: 50,
+    _id: 1,
   },
   {
     metric: 'Agent',
     value: 10,
+    _id: 2,
   },
   {
     metric: 'TicketHandling',
     value: 40,
+    _id: 3,
   },
   {
     metric: 'Overall Experience',
     value: 89,
+    _id: 4,
   },
   {
     metric: 'Response Time',
     value: 85.4,
+    _id: 5,
   },
   {
     metric: 'Online & Systems',
     value: 15,
+    _id: 6,
   },
 ];
 const osats = [
@@ -60,30 +66,7 @@ const kpi = {
   trends: trends,
   osats: osats,
 }
-// Type definitions define the "shape" of your data and specify
-// which ways the data can be fetched from the GraphQL server.
-const typeDefs = gql`
-  # This "Trend" type can be used in other type declarations.
-  type Trend {
-    metric: String
-    value: Float
-  }
-  type OSAT {
-    month: String
-    value: Float
-  }
-  type KPI {
-    trends: [Trend]
-    osats: [OSAT]
-  }
 
-  # The "Query" type is the root of all GraphQL queries.
-  # (A "Mutation" type will be covered later on.)
-  type Query {
-    kpi: KPI
-    trends: [Trend]
-  }
-`;
 
 // Resolvers define the technique for fetching the types in the
 // schema.  We'll retrieve kpi from the "trends" array above.
