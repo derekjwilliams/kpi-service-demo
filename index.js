@@ -7,58 +7,64 @@ const trends = [
   {
     metric: 'Phone Experience',
     value: 50,
-    _id: 1,
+    id: 1,
   },
   {
     metric: 'Agent',
     value: 10,
-    _id: 2,
+    id: 2,
   },
   {
     metric: 'TicketHandling',
     value: 40,
-    _id: 3,
+    id: 3,
   },
   {
     metric: 'Overall Experience',
     value: 89,
-    _id: 4,
+    id: 4,
   },
   {
     metric: 'Response Time',
     value: 85.4,
-    _id: 5,
+    id: 5,
   },
   {
     metric: 'Online & Systems',
     value: 15,
-    _id: 6,
+    id: 6,
   },
 ];
 const osats = [
   {
     month: 'March',
     value: 79.3,
+    id: 2,
   },
   {
     month: 'April',
     value: 71.4,
+    id: 3,
   },
   {
     month: 'May',
     value: 68.6,
+    id: 4,
   },
   {
     month: 'June',
     value: 75,
+    id: 5,
   },
   {
     month: 'July',
     value: 63.4,
+    id: 6,
   },
   {
     month: 'August',
     value: 74,
+    id: 7,
   },
 ]
 

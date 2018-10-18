@@ -5,15 +5,27 @@ export const typeDefs = gql`
     id: ID!
   }
   # This "Trend" type can be used in other type declarations.
-  type Trend {
-    _id: ID!
+  type Trend implements Node {
+    id: ID!
     metric: String
     value: Float
+    trendsConnection(
+        first: Int,
+        after: String,
+        last: Int,
+        before: String
+      ): KPITrendsConnection
   }
-  type OSAT {
-    _id: ID!
+  type OSAT implements Node {
+    id: ID!
     month: String
     value: Float
+    trendsConnection(
+        first: Int,
+        after: String,
+        last: Int,
+        before: String
+      ): KPITrendsConnection
   }
   type KPI {
     trends: [Trend]
@@ -24,6 +36,7 @@ export const typeDefs = gql`
     endCursor: String
     hasNextPage: Boolean
   }
+
   type KPITrendsConnection {
     pageInfo: PageInfo!
     edges: [KPITrendsEdge]
@@ -32,13 +45,16 @@ export const typeDefs = gql`
     cursor: String!
     node: Trend
   }
+  type KPIOSATsConnection {
+    pageInfo: PageInfo!
+    edges: [KPIOSATsEdge]
+  }
+  type KPIOSATsEdge {
+    cursor: String!
+    node: OSAT
+  }
 
-  extend type Trend implements Node {
-    id: ID!
-  }
-  extend type OSAT implements Node {
-    id: ID!
-  }
+
 
   # The "Query" type is the root of all GraphQL queries.
   # (A "Mutation" type will be covered later on.)
